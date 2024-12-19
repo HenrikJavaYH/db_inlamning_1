@@ -1,6 +1,6 @@
 package se.henrik.db;
 
-import org.hsqldb.lib.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +9,9 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class Dbtest {
@@ -33,24 +36,24 @@ public class Dbtest {
             workroleDAO.insertWorkrole(workrole);
 
 
-            System.out.println(workroleDAO.getAllWorkroles());
+            //System.out.println(workroleDAO.getAllWorkroles());
 
 
 
 
-           //workroles = workroleDAO.getAllWorkroles();
+           workroles = workroleDAO.getAllWorkroles();
+
+            for (Workrole workrole1 : workroles) {
+                System.out.println(workrole1);
+
+            }
 
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
 
         }
-
-
-
-
-
-
+        assertEquals(1, workroles.size());
 
     }
 
